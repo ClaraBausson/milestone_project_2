@@ -1,0 +1,61 @@
+body {
+    background-color: #fdfdfd;
+    font-size: small;
+}
+
+/*----------JUMBOTRON----------*/
+
+#landing-view {
+    background-attachment: fixed;
+    background-image: url('../../images/sm_2_home.jpg');
+    background-position: top;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    margin-bottom: 0px;
+    z-index: 1;
+}
+
+.landing-container {
+    padding-left: 0px;
+    text-align: center;
+}
+
+.landing-container h1 {
+    padding-top: 5%;
+    font-size: 5em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.landing-container p {
+    font-size: 2em;
+}
+
+/*-----------MEDIA QUERIES----------*/
+
+@media (min-width: 768px) {
+    body {
+        font-size: larger;
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        font-size: larger;
+    }
+    #landing-view {
+        background-attachment: fixed;
+        background-image: url('../../images/md_2_home.jpg');
+        background-position: top;
+        background-size: cover;
+        height: 100vh;
+        width: inherit;
+        margin-bottom: 0px;
+        z-index: 1;
+    }
+    .landing-container {
+        padding-left: 0px;
+        text-align: left;
+    }
+}
