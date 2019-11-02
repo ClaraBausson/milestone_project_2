@@ -52,9 +52,7 @@ The color scheme is black and white with orange highlights, to keep the website 
 
 
 ### Media
-All background images were taken from two stock image libraries, [Pexels](https://www.pexels.com/) and [Freepik](https://www.freepik.com/). Some pictures were modified with filters, to better fit the overall theme.
-
-The pictures are hosted on [Cloudinary](https://cloudinary.com/).
+All background images were taken from two stock image libraries, [Pexels](https://www.pexels.com/) and [Pixabay](https://pixabay.com/). Some pictures were modified with filters, to better fit the overall theme.
 
 ### Acknowledgements
 
