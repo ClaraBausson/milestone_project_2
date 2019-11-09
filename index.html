@@ -11,7 +11,7 @@
     <!---CSS LINKS--->
     <link rel="stylesheet" href="static/css/external/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/external/dc.min.css" type="text/css" />
-    
+
     <link rel="stylesheet" href="static/css/main.css" type="text/css" />
 </head>
 
@@ -20,7 +20,7 @@
     <div class="jumbotron" id="landing-view">
         <div class="container landing-container">
             <br><br><br>
-            <h1 class="name">Budget</h1>
+            <h3 class="name">Budget</h3>
             <p class="title">A budget visualizator</p>
             <button type="button" class="btn btn-primary btn-lg">
                 <a class="btn-primary" href="#top_navbar">See more</a>
@@ -28,7 +28,6 @@
         </div>
     </div>
     -->
-
 
     <!--NAVBAR-->
     <nav id="top_navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -49,12 +48,43 @@
     </nav>
 
     <!--FORM+DASHBOARD-->
-    
-    <h1>Category expenses piechart</h1>
-    <div id="debit_category_balance"></div>
-    
-    <h1>Category incomes piechart</h1>
-    <div id="credit_category_balance"></div>
+
+    <div class="container">
+        <div class="row">
+            <h3>Month selector</h3>
+            <div id="month_selector"></div>
+        </div>
+
+        <div class="row">
+            <h3>Daily Spending</h3>
+            <div id="daily_spending"></div>
+        </div>
+
+        <div class="row">
+            <h3>Income/expenses column chart</h3>
+            <div id="column_debit-credit_per_month"></div>
+        </div>
+
+        <div class="row">
+            <h3>Income piechart</h3>
+            <div id="pie_income"></div>
+        </div>
+
+        <div class="row">
+            <h3>Piechart expenses (separate categories)</h3>
+            <div id="pie_expenses_category"></div>
+        </div>
+
+        <div class="row">
+            <h3>Category expenses per month</h3>
+            <div id="category-distribution"></div>
+        </div>
+
+        <div>
+            <h3>Total Spend Per Month</h3>
+            <div id="chart-here"></div>
+        </div>
+    </div>
 
     <!---JS LINKS--->
     <script type="text/javascript" src="static/js/external/d3.min.js"></script>
