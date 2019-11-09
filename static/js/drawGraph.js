@@ -6,24 +6,40 @@ function drawGraphs(error, budgetData) {
     var ndx = crossfilter(budgetData);
 
     show_month_selector(ndx);
+<<<<<<< HEAD
     show_income_category_piechart(ndx);
     show_spend_category_piechart(ndx);
     show_category_distribution(ndx);
     balance_linechart(error, budgetData, ndx);
     
+=======
+    show_spend_category_piechart(ndx);
+    show_income_category_piechart(ndx);
+    show_category_distribution(ndx);
+
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
     dc.renderAll();
 }
 
 function show_month_selector(ndx) {
     var dim = ndx.dimension(dc.pluck('month'));
     var group = dim.group();
+<<<<<<< HEAD
 
     dc.selectMenu("#month_selector")
+=======
+    
+    dc.selectMenu("#month-selector")
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
         .dimension(dim)
         .group(group);
 }
 
+<<<<<<< HEAD
 function show_income_category_piechart(ndx) {
+=======
+function show_spend_category_piechart(ndx) {
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
     var dim = ndx.dimension(dc.pluck('category'));
     var group = dim.group().reduceSum(dc.pluck('credit amount'));
 
@@ -47,6 +63,7 @@ function show_spend_category_piechart(ndx) {
         .group(group);
 }
 
+<<<<<<< HEAD
 function show_category_distribution(ndx) {
 
     function categoryByMonth(dimension, category) {
@@ -54,23 +71,49 @@ function show_category_distribution(ndx) {
             function(p, v) {
                 p.total++;
                 if (v.category == category) {
+=======
+
+
+function show_category_distribution(ndx) {
+    
+    function categoryByMonth(dimension, category) {
+        return dimension.group().reduce(
+            function (p, v) {
+                p.total++;
+                if(v.category == category) {
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
                     p.match++;
                 }
                 return p;
             },
+<<<<<<< HEAD
             function(p, v) {
                 p.total--;
                 if (v.category == category) {
+=======
+            function (p, v) {
+                p.total--;
+                if(v.category == category) {
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
                     p.match--;
                 }
                 return p;
             },
+<<<<<<< HEAD
             function() {
                 return { total: 0, match: 0 };
             }
         );
     }
 
+=======
+            function () {
+                return {total: 0, match: 0};
+            }
+        );
+    }
+    
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
     var dim = ndx.dimension(dc.pluck("month"));
     var savingsByMonth = categoryByMonth(dim, "Savings");
     var goingOutByMonth = categoryByMonth(dim, "Going Out");
@@ -83,7 +126,11 @@ function show_category_distribution(ndx) {
     var entertainmentByMonth = categoryByMonth(dim, "Entertainment");
     var othersByMonth = categoryByMonth(dim, "Others");
     var coffeeByMonth = categoryByMonth(dim, "Coffee");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
     dc.barChart("#category-distribution")
         .width(450)
         .height(300)
@@ -100,16 +147,23 @@ function show_category_distribution(ndx) {
         .stack(othersByMonth, "Others")
         .stack(savingsByMonth, "Savings")
         .valueAccessor(function(d) {
+<<<<<<< HEAD
             if (d.value.total > 0) {
                 return (d.value.match / d.value.total) * 100;
             }
             else {
+=======
+            if(d.value.total > 0) {
+                return (d.value.match / d.value.total) * 100;
+            } else {
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
                 return 0;
             }
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .legend(dc.legend().x(350).y(20).itemHeight(10).gap(10))
+<<<<<<< HEAD
         .margins({ top: 10, right: 100, bottom: 30, left: 30 });
 }
 
@@ -133,3 +187,7 @@ function balance_linechart(error, budgetData, ndx) {
         .xAxisLabel("Month")
         .yAxis().ticks(4);
 }
+=======
+        .margins({top: 10, right: 100, bottom: 30, left: 30});
+}
+>>>>>>> 14e9bf1f8b476545d09e05dc211723ad21f451cf
