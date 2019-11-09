@@ -47,44 +47,60 @@
         </div>
     </nav>
 
-    <!--FORM+DASHBOARD-->
-
-    <div class="container">
+    <!--DASHBOARD-->
+    <section class="container">
         <div class="row">
-            <h3>Month selector</h3>
-            <div id="month_selector"></div>
+            <div class="col-xs-12 col-sm-6" id="month_selector">Select a specific month?</div>
+            <div class="col-xs-12 col-sm-6" id="daily_spending">Average spending</div>
         </div>
+    </section>
 
+    <section class="container">
         <div class="row">
-            <h3>Daily Spending</h3>
-            <div id="daily_spending"></div>
+            <div class="col-12">
+                <h1>Types of incomes</h1>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h2>Active Income</h2>
+                <p>Income for which services have been performed. This includes wages, tips, salaries, commissions, and income from businesses in which there is material participation.</p>
+                <h2>Passive Income</h2>
+                <p>An income stream falling into this category is one where money is received usually on a regular basis, where no additional effort has taken place. Most passive income streams require great effort to start with. Passive income streams allow
+                    you to make money without having to be there.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6" id="pie_income"></div>
         </div>
+    </section>
 
+    <section class="container">
         <div class="row">
-            <h3>Income/expenses column chart</h3>
-            <div id="column_debit-credit_per_month"></div>
+            <div class="col-xs-12 col-sm-6" id="pie_expenses_category"></div>
+            <div class="col-xs-12 col-sm-6">
+                <h2>Why should you use budget categories?</h2>
+                <p>When it comes to creating a personal budget, it can feel like there are a million financial categories to consider. In order to create a successful budget, everything should be accounted for, from large expenses like your mortgage and
+                    car payment to smaller expenses like your gym membership and Netflix subscription. It allows you to clearly identify the most expensive expenses.</p>
+            </div>
         </div>
+    </section>
 
+    <section class="container">
         <div class="row">
-            <h3>Income piechart</h3>
-            <div id="pie_income"></div>
+            <div class="col-12">
+                <h2>An overall view of your budget</h2>
+                <p>Having a clear view of your budget is critical. Whether you're planning to buy a house or a weekend escapade, it is essential to pinpoint which areas of your budget are essential and which are superfluous.</p>
+            </div>
+            <div class="col-12" id="category-distribution"></div>
         </div>
+    </section>
 
+    <section class="container">
         <div class="row">
-            <h3>Piechart expenses (separate categories)</h3>
-            <div id="pie_expenses_category"></div>
+            <div class="col-12">
+                <h2>How much are you spending per year?</h2>
+                <p>What a scary view...</p>
+            </div>
+            <div class="col-12" id="chart-here"></div>
         </div>
-
-        <div class="row">
-            <h3>Category expenses per month</h3>
-            <div id="category-distribution"></div>
-        </div>
-
-        <div>
-            <h3>Total Spend Per Month</h3>
-            <div id="chart-here"></div>
-        </div>
-    </div>
+    </section>
 
     <!---JS LINKS--->
     <script type="text/javascript" src="static/js/external/d3.min.js"></script>

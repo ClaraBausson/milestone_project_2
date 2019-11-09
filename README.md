@@ -48,6 +48,10 @@ The main goal for this project was to make it as easy as possible for users to v
 * **Clara Bausson** - *Initial work* - [ClaraBausson](https://github.com/ClaraBausson)
 
 ### Content
+Text content was based on various websites:
+* https://kclau.com/wealth-management/3-types-of-income-active-portfolio-and-passive-income/
+* https://localfirstbank.com/content/personal-budget-categories/
+* 
 
 
 ### Media
