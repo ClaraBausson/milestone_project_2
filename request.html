@@ -9,10 +9,9 @@
     <title>Budget</title>
 
     <!---CSS LINKS--->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="static/css/hover-min.css" type="text/css" />
-    <link rel="stylesheet" href="static/css/dc.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/external/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/external/dc.min.css" type="text/css" />
+
     <link rel="stylesheet" href="static/css/main.css" type="text/css" />
 </head>
 
@@ -26,36 +25,48 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html#form_dashboard">My dashboard</a>
+                    <a class="nav-link" href="#form-dashboard">My dashboard</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="dropdown" aria-expanded="false">More<span class="caret"></span></a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown">
-                        <a class="dropdown-item active" href="request.html">Make a request<span class="sr-only">(current)</span></a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="about.html">About</a>
-                        <a class="dropdown-item" href="credits.html">Credits</a>
-                    </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#form-dashboard">Send a request<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
-    
-    <!--FORM+DASHBOARD-->
-    <div id="form_dashboard" class="container">
-        
-    </div>
+
+    <!--DASHBOARD-->
+    <section class="container-fluid ">
+        <div class="row col-12">
+            <h3 class="text-center uppercase">Want another feature?</h3>
+            <br>
+            <br>
+        </div>
+        <div class="row col-12">
+            <h4 class="text-center">Let us know!</h4>
+        </div>
+        <div class="row col-12">
+            <form onsubmit="return sendMail(this);" method="POST">
+                <input type="text" name="name" class="form-control" id="fullname" placeholder="Name" required/>
+                <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Email" required/>
+                <textarea rows="5" name="featuresummary" class="form-control" id="featuresummary" placeholder="Feature Description" required></textarea>
+                <button type="submit" class="btn btn-secondary center-block">Send Feature Request</button>
+            </form>
+        </div>
+    </section>
 
     <!---JS LINKS--->
-    <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
-    <script type="text/javascript" src="static/js/d3-queue.min.js"></script>
-    <script type="text/javascript" src="static/js/d3.min.js"></script>
-    <script type="text/javascript" src="static/js/dc.min.js"></script>
-    <script type="text/javascript" src="static/js/email.min.js"></script>
-    <script src="assets/js/sendEmail.js"></script>
+    <script type="text/javascript" src="static/js/external/d3.min.js"></script>
+    <script type="text/javascript" src="static/js/external/crossfilter.min.js"></script>
+    <script type="text/javascript" src="static/js/external/dc.min.js"></script>
+    <script type="text/javascript" src="static/js/external/queue.min.js"></script>
+    <script type="text/javascript" src="static/js/external/email.min.js"></script>
+
+    <script type="text/javascript" src="static/js/sendEmail.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("user_JiGFIABV0rdCPIDeekb2d");
+        })();
+    </script>
 </body>
 
 </html>
