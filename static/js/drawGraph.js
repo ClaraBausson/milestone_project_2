@@ -9,8 +9,8 @@ function drawGraphs(error, budgetData) {
     show_income_category_piechart(ndx);
     show_spend_category_piechart(ndx);
     show_category_distribution(ndx);
-    balance_linechart(error, budgetData, ndx);
-    
+    show_balance_linechart(error, budgetData, ndx);
+
     dc.renderAll();
 }
 
@@ -27,27 +27,44 @@ function show_income_category_piechart(ndx) {
     var dim = ndx.dimension(dc.pluck('category'));
     var group = dim.group().reduceSum(dc.pluck('credit amount'));
 
+    var categoriesColors = d3.scale.ordinal()
+        .domain(["Income (active)", "Income (passive)"])
+        .range(["#1E90FF", "#A9A9A9"]);
+
+
     dc.pieChart('#pie_income')
         .height(200)
         .radius(150)
         .transitionDuration(1000)
         .dimension(dim)
-        .group(group);
+        .group(group)
+        .colors(categoriesColors);
 }
 
 function show_spend_category_piechart(ndx) {
     var dim = ndx.dimension(dc.pluck('category'));
     var group = dim.group().reduceSum(dc.pluck('debit amount'));
 
+    var categoriesColors = d3.scale.ordinal()
+        .domain(["Savings", "Going Out", "Healthcare", "Rent", "Transport", "Clothing", "Groceries", "Bills", "Entertainment", "Others", "Coffee"])
+        .range(["#228B22", "#8B008B", "#00FF00", "#FF0000", "#FF4500", "#00CED1", "#FFD700", "#8B0000", "#4B0082", "#C0C0C0", "#D2691E"]);
+
+
     dc.pieChart('#pie_expenses_category')
         .height(200)
         .radius(150)
         .transitionDuration(1000)
         .dimension(dim)
-        .group(group);
+        .group(group)
+        .colors(categoriesColors);
 }
 
 function show_category_distribution(ndx) {
+    var dim = ndx.dimension(dc.pluck('month'));
+
+    var categoriesColors = d3.scale.ordinal()
+        .domain(["Savings", "Going Out", "Healthcare", "Rent", "Transport", "Clothing", "Groceries", "Bills", "Entertainment", "Others", "Coffee"])
+        .range(["#228B22", "#8B008B", "#00FF00", "#FF0000", "#FF4500", "#00CED1", "#FFD700", "#8B0000", "#4B0082", "#C0C0C0", "#D2691E"]);
 
     function categoryByMonth(dimension, category) {
         return dimension.group().reduce(
@@ -71,21 +88,20 @@ function show_category_distribution(ndx) {
         );
     }
 
-    var dim = ndx.dimension(dc.pluck("month"));
-    var savingsByMonth = categoryByMonth(dim, "Savings");
-    var goingOutByMonth = categoryByMonth(dim, "Going Out");
-    var healthcareByMonth = categoryByMonth(dim, "Healthcare");
     var rentByMonth = categoryByMonth(dim, "Rent");
-    var transportByMonth = categoryByMonth(dim, "Transport");
-    var clothingByMonth = categoryByMonth(dim, "Clothing");
-    var groceriesByMonth = categoryByMonth(dim, "Groceries");
     var billsByMonth = categoryByMonth(dim, "Bills");
-    var entertainmentByMonth = categoryByMonth(dim, "Entertainment");
-    var othersByMonth = categoryByMonth(dim, "Others");
+    var transportByMonth = categoryByMonth(dim, "Transport");
+    var healthcareByMonth = categoryByMonth(dim, "Healthcare");
+    var groceriesByMonth = categoryByMonth(dim, "Groceries");
+    var goingOutByMonth = categoryByMonth(dim, "Going Out");
     var coffeeByMonth = categoryByMonth(dim, "Coffee");
-
-    dc.barChart("#category-distribution")
-        .width(450)
+    var entertainmentByMonth = categoryByMonth(dim, "Entertainment");
+    var clothingByMonth = categoryByMonth(dim, "Clothing");
+    var othersByMonth = categoryByMonth(dim, "Others");
+    var savingsByMonth = categoryByMonth(dim, "Savings");
+    
+    dc.barChart("#category_stackbarchart")
+        .width(500)
         .height(300)
         .dimension(dim)
         .group(rentByMonth, "Rent")
@@ -109,11 +125,12 @@ function show_category_distribution(ndx) {
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .legend(dc.legend().x(350).y(20).itemHeight(10).gap(10))
+        .legend(dc.legend().x(620).y(20).itemHeight(10).gap(10))
+        .colors(categoriesColors)
         .margins({ top: 10, right: 100, bottom: 30, left: 30 });
 }
 
-function balance_linechart(error, budgetData, ndx) {
+function show_balance_linechart(error, budgetData, ndx) {
     var parseDate = d3.time.format("%d/%m/%Y").parse;
     budgetData.forEach(function(d) {
         d.date = parseDate(d.date);
@@ -122,8 +139,8 @@ function balance_linechart(error, budgetData, ndx) {
     var balance_per_date = date_dim.group().reduceSum(dc.pluck('balance'));
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
-    dc.lineChart("#chart-here")
-        .width(1000)
+    dc.lineChart("#balance_linechart")
+        .width(500)
         .height(300)
         .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .dimension(date_dim)
