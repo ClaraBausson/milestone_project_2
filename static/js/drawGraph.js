@@ -101,7 +101,7 @@ function show_category_distribution(ndx) {
     var savingsByMonth = categoryByMonth(dim, "Savings");
     
     dc.barChart("#category_stackbarchart")
-        .width(500)
+        .width(600)
         .height(300)
         .dimension(dim)
         .group(rentByMonth, "Rent")
@@ -140,7 +140,7 @@ function show_balance_linechart(error, budgetData, ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
     dc.lineChart("#balance_linechart")
-        .width(500)
+        .width(600)
         .height(300)
         .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .dimension(date_dim)

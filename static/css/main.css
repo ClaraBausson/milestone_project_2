@@ -73,5 +73,4 @@ section {
 #balance_linechart .x.axis text {
     text-anchor: end !important;
     transform: rotate(-35deg);
-    padding-bottom: 50px !important;
 }
