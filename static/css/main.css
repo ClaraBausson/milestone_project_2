@@ -5,6 +5,11 @@ body {
     font-size: 12px;
 }
 
+section {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 30px 0;
+}
+
 /*----------JUMBOTRON----------*/
 
 #landing-view {
@@ -62,15 +67,18 @@ body {
     }
 }
 
-/*--STUFF--*/
 
-section {
-    border-bottom: 1px solid #e6e6e6;
-    padding: 30px 0;
-}
+/*-----------CHARTS----------*/
 
 #category_stackbarchart .x.axis text,
 #balance_linechart .x.axis text {
     text-anchor: end !important;
     transform: rotate(-35deg);
+}
+
+.dc-chart .pie-slice.external,
+.dc-chart .dc-legend-item,
+.dc-chart .tick {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    fill: #7a7a7a;
 }
