@@ -29,7 +29,8 @@ The main goal for this project was to make it as easy as possible for users to v
 * Responsiveness on both mobile and desktop
 * Static navbar to allow the user a quick access to all areas
 * Collapsed navbar on smaller screen sizes
-* Interactive charts
+* Connected charts - all charts are linked and interact with each others
+* Interactive charts - all charts can be manipulated by the user, and the user can obtain more info by hovering any part of the data
 
 ### Features Left to Implement
 * Email request feature
@@ -38,7 +39,8 @@ The main goal for this project was to make it as easy as possible for users to v
 ## Testing
 
 ### Remaining bugs
-* Data interaction between pie charts and bar charts
+* Months are not in correct order
+* Income pie chart interacts in an odd way with the other charts
 * Chart size should adapt to screen size
 
 ## Credits
@@ -51,7 +53,6 @@ The main goal for this project was to make it as easy as possible for users to v
 Text content was based on various websites:
 * https://kclau.com/wealth-management/3-types-of-income-active-portfolio-and-passive-income/
 * https://localfirstbank.com/content/personal-budget-categories/
-* 
 
 
 ### Media
