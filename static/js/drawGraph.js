@@ -24,7 +24,7 @@ function show_month_selector(ndx) {
         .group(group)
         .multiple(true)
         .promptText('All months')
-        .numberVisible(13);
+        .numberVisible(5);
 }
 
 function show_income_category_piechart(ndx) {
@@ -93,7 +93,7 @@ function show_spend_category_piechart(ndx) {
             .append('tspan')
             .text(function(d) { return d.name; })
             .append('tspan')
-            .attr('x', 500)
+            .attr('x', 50)
             .attr('text-anchor', 'end')
             .text(function(d) { return d.data; });
     });
@@ -197,4 +197,8 @@ function show_balance_linechart(error, budgetData, ndx) {
         .brushOn(false)
         .renderDataPoints({ radius: 2.2, fillOpacity: 0.8, strokeOpacity: 0.9 })
         .yAxis().ticks(4);
+}
+
+function show_balance_barchart(error, budgetData, ndx) {
+    
 }
