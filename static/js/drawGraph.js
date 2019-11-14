@@ -10,7 +10,7 @@ function drawGraphs(error, budgetData) {
     show_spend_category_piechart(ndx);
     show_category_stackchart(ndx);
     show_balance_linechart(error, budgetData, ndx);
-    show_balance_barchart(ndx);
+    show_number_transactions_barchart(ndx);
 
     dc.renderAll();
 }
@@ -35,6 +35,31 @@ function show_month_selector(ndx) {
         .multiple(true)
         .promptText('All months')
         .numberVisible(5);
+}
+
+function show_number_transactions_barchart(ndx) {
+    var dim = ndx.dimension(dc.pluck('type'));
+    var group = dim.group();
+
+    var categoriesColors = d3.scale.ordinal()
+        .domain(["credit", "debit"])
+        .range(["blue", "red"]);
+
+    dc.barChart("#number_of_transactions")
+        .width(350)
+        .height(250)
+        .margins({ top: 15, right: 50, bottom: 30, left: 50 })
+        .dimension(dim)
+        .group(group)
+        .colors(categoriesColors)
+        .transitionDuration(500)
+        .xAxisLabel('Type of transaction')
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .yAxisLabel('Number of transactions')
+        .y(d3.scale.linear().domain([0, 1505]))
+        .elasticY(false)
+        .renderLabel(true);
 }
 
 function show_income_category_piechart(ndx) {
@@ -240,8 +265,4 @@ function show_balance_linechart(error, budgetData, ndx) {
         .brushOn(false)
         .renderDataPoints({ radius: 2.2, fillOpacity: 0.8, strokeOpacity: 0.9 })
         .yAxis().ticks(4);
-}
-
-function show_balance_barchart(ndx) {
-
 }

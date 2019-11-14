@@ -82,3 +82,7 @@ section {
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     fill: #7a7a7a;
 }
+
+#daily_spending svg g g g rect .bar title {
+    padding: 5px !important;
+}
