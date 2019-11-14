@@ -1,4 +1,4 @@
-#,date,month,type,category,debit amount,credit amount,balance
+#,date,month,type,category,debit_amount,credit_amount,balance
 1,02/01/2018,January,debit,Savings,1.16,,389.43
 2,02/01/2018,January,debit,Savings,100,,289.43
 3,02/01/2018,January,debit,Bills,20.52,,268.91

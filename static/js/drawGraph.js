@@ -10,12 +10,22 @@ function drawGraphs(error, budgetData) {
     show_spend_category_piechart(ndx);
     show_category_stackchart(ndx);
     show_balance_linechart(error, budgetData, ndx);
-    show_balance_barchart(error, budgetData, ndx);
+    show_balance_barchart(ndx);
 
     dc.renderAll();
 }
 
+// DATA
+// #,date,month,type,category,debit_amount,credit_amount,balance
+// 1,02/01/2018,January,debit,Savings,1.16,,389.43
+// 2,02/01/2018,January,debit,Savings,100,,289.43
+// 3,02/01/2018,January,debit,Bills,20.52,,268.91
+// 4,02/01/2018,January,credit,Income (passive),,1.58,270.49
+
+
+
 function show_month_selector(ndx) {
+
     var dim = ndx.dimension(dc.pluck('month'));
     var group = dim.group();
 
@@ -29,9 +39,31 @@ function show_month_selector(ndx) {
 
 function show_income_category_piechart(ndx) {
     var chart = dc.pieChart('#pie_income');
-    
+
     var dim = ndx.dimension(dc.pluck('category'));
-    var group = dim.group().reduceSum(dc.pluck('credit amount'));
+    var group = dim.group().reduceSum(dc.pluck('credit_amount'));
+
+    // function categoryByMonth(dimension, category, amount) {
+    //     return dimension.group().reduce(
+    //         function(p, v) {
+    //             p.total++;
+    //             if (v.category == category) {
+    //                 p.match++;
+    //             }
+    //             return p;
+    //         },
+    //         function(p, v) {
+    //             p.total--;
+    //             if (v.category == category) {
+    //                 p.match--;
+    //             }
+    //             return p;
+    //         },
+    //         function() {
+    //             return { total: 0, match: 0 };
+    //         }
+    //     );
+    // }
 
     var categoriesColors = d3.scale.ordinal()
         .domain(["Income (active)", "Income (passive)"])
@@ -46,10 +78,12 @@ function show_income_category_piechart(ndx) {
         .group(group)
         .colors(categoriesColors)
         .renderLabel(true)
+        .minAngleForLabel(0.2)
         .innerRadius(50)
-        .externalLabels(50)
+        .externalLabels(40)
         .externalRadiusPadding(50)
-        .drawPaths(true);
+        .drawPaths(true)
+        .emptyTitle("No data");
 
     chart.on('pretransition', function(chart) {
         chart.selectAll('.dc-legend-item text')
@@ -65,14 +99,14 @@ function show_income_category_piechart(ndx) {
 
 function show_spend_category_piechart(ndx) {
     var chart = dc.pieChart('#pie_expenses_category');
-    
+
     var dim = ndx.dimension(dc.pluck('category'));
-    var group = dim.group().reduceSum(dc.pluck('debit amount'));
+    var group = dim.group().reduceSum(dc.pluck('debit_amount'));
 
     var categoriesColors = d3.scale.ordinal()
         .domain(["Savings", "Going Out", "Healthcare", "Rent", "Transport", "Clothing", "Groceries", "Bills", "Entertainment", "Others", "Coffee"])
         .range(["#228B22", "#8B008B", "#00FF00", "#FF0000", "#FF4500", "#00CED1", "#FFD700", "#8B0000", "#4B0082", "#C0C0C0", "#D2691E"]);
-        
+
 
     chart
         .width(500)
@@ -82,10 +116,13 @@ function show_spend_category_piechart(ndx) {
         .group(group)
         .colors(categoriesColors)
         .renderLabel(true)
+        .minAngleForLabel(0.2)
         .innerRadius(50)
-        .externalLabels(50)
-        .externalRadiusPadding(50)
-        .drawPaths(true);
+        .externalLabels(40)
+        .externalRadiusPadding(60)
+        .radius(250)
+        .drawPaths(true)
+        .emptyTitle("No data");
 
     chart.on('pretransition', function(chart) {
         chart.selectAll('.dc-legend-item text')
@@ -101,7 +138,7 @@ function show_spend_category_piechart(ndx) {
 
 function show_category_stackchart(ndx) {
     var chart = dc.barChart("#category_stackbarchart")
-    
+
     var dim = ndx.dimension(dc.pluck('month'));
 
     var categoriesColors = d3.scale.ordinal()
@@ -143,7 +180,7 @@ function show_category_stackchart(ndx) {
     var savingsByMonth = categoryByMonth(dim, "Savings");
 
     chart
-        .width(650)
+        .width(600)
         .height(300)
         .dimension(dim)
         .group(rentByMonth, "Rent")
@@ -167,30 +204,36 @@ function show_category_stackchart(ndx) {
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .legend(dc.legend().x(0).y(20).itemHeight(10).gap(10))
+        .yAxisLabel('Expenses per month (in %)')
+        .legend(dc.legend().x(500).y(20).itemHeight(10).gap(10))
         .colors(categoriesColors)
-        .margins({ left: 150, top: 20, right: 0, bottom: 50 })
+        .margins({ left: 50, top: 20, right: 130, bottom: 50 })
         .elasticY(true);
 }
 
 function show_balance_linechart(error, budgetData, ndx) {
     var chart = dc.lineChart("#balance_linechart");
-    
+
     var parseDate = d3.time.format("%d/%m/%Y").parse;
     budgetData.forEach(function(d) {
         d.date = parseDate(d.date);
     });
+
     var date_dim = ndx.dimension(dc.pluck('date'));
-    var balance_per_date = date_dim.group().reduceSum(dc.pluck('balance'));
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
-    
+
+    var balance_per_date = date_dim.group().reduceSum(function(d) {
+        return parseFloat(d.balance);
+    });
+
     chart
         .width(650)
         .height(300)
         .margins({ top: 10, right: 0, bottom: 50, left: 50 })
         .dimension(date_dim)
         .group(balance_per_date)
+        .colors('MidnightBlue')
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .renderArea(false)
@@ -199,6 +242,6 @@ function show_balance_linechart(error, budgetData, ndx) {
         .yAxis().ticks(4);
 }
 
-function show_balance_barchart(error, budgetData, ndx) {
-    
+function show_balance_barchart(ndx) {
+
 }
