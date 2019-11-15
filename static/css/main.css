@@ -78,11 +78,18 @@ section {
 
 .dc-chart .pie-slice.external,
 .dc-chart .dc-legend-item,
-.dc-chart .tick {
+.dc-chart .tick,
+.dc-chart .barLabel {
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     fill: #7a7a7a;
 }
 
-#daily_spending svg g g g rect .bar title {
-    padding: 5px !important;
+.dc-chart .chart-body {
+    font-size: smaller;
+}
+
+.dc-chart .y-axis-label,
+.dc-chart .x-axis-label{
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    fill: 4f4f4f;
 }

@@ -11,18 +11,45 @@ function drawGraphs(error, budgetData) {
     show_category_stackchart(ndx);
     show_balance_linechart(error, budgetData, ndx);
     show_number_transactions_barchart(ndx);
+    // trial_filter_out_from_group(ndx);
 
     dc.renderAll();
 }
 
-// DATA
-// #,date,month,type,category,debit_amount,credit_amount,balance
-// 1,02/01/2018,January,debit,Savings,1.16,,389.43
-// 2,02/01/2018,January,debit,Savings,100,,289.43
-// 3,02/01/2018,January,debit,Bills,20.52,,268.91
-// 4,02/01/2018,January,credit,Income (passive),,1.58,270.49
+// // DATA
+// // #,date,month,type,category,debit_amount,credit_amount,balance
+// // 1,02/01/2018,January,debit,Savings,1.16,,389.43
+// // 2,02/01/2018,January,debit,Savings,100,,289.43
+// // 3,02/01/2018,January,debit,Bills,20.52,,268.91
+// // 4,02/01/2018,January,credit,Income (passive),,1.58,270.49
 
+// function trial_filter_out_from_group(ndx) {
+//     var dim = ndx.dimension(dc.pluck('category'));
+//     var group = dim.group();
 
+//     var array = [
+//         { "id": "88", "name": "Lets go testing" },
+//         { "id": "99", "name": "Have fun boys and girls" },
+//         { "id": "108", "name": "You are awesome!" }
+//     ];
+//     var search_column = 'id';
+//     var search_term = '99';
+
+//     console.log(array);
+
+//     function filterOut2(array, search_column, search_term) {
+//         for (var i = array.length - 1; i >= 0; i--) {
+//             if (array[i].search_column === search_term) {
+//                 array.splice(i, 1);
+//                 console.log(array);
+//             }
+//         }
+//     }
+
+//     var newArray = filterOut2(array, search_column, search_term);
+//     console.log(newArray);
+
+// }
 
 function show_month_selector(ndx) {
 
@@ -47,7 +74,7 @@ function show_number_transactions_barchart(ndx) {
 
     dc.barChart("#number_of_transactions")
         .width(350)
-        .height(250)
+        .height(350)
         .margins({ top: 15, right: 50, bottom: 30, left: 50 })
         .dimension(dim)
         .group(group)
@@ -57,7 +84,7 @@ function show_number_transactions_barchart(ndx) {
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .yAxisLabel('Number of transactions')
-        .y(d3.scale.linear().domain([0, 1505]))
+        .y(d3.scale.linear().domain([0, 1550]))
         .elasticY(false)
         .renderLabel(true);
 }
@@ -68,36 +95,14 @@ function show_income_category_piechart(ndx) {
     var dim = ndx.dimension(dc.pluck('category'));
     var group = dim.group().reduceSum(dc.pluck('credit_amount'));
 
-    // function categoryByMonth(dimension, category, amount) {
-    //     return dimension.group().reduce(
-    //         function(p, v) {
-    //             p.total++;
-    //             if (v.category == category) {
-    //                 p.match++;
-    //             }
-    //             return p;
-    //         },
-    //         function(p, v) {
-    //             p.total--;
-    //             if (v.category == category) {
-    //                 p.match--;
-    //             }
-    //             return p;
-    //         },
-    //         function() {
-    //             return { total: 0, match: 0 };
-    //         }
-    //     );
-    // }
-
     var categoriesColors = d3.scale.ordinal()
         .domain(["Income (active)", "Income (passive)"])
         .range(["#1E90FF", "#A9A9A9"]);
 
 
     chart
-        .width(500)
-        .height(350)
+        .width(600)
+        .height(400)
         .transitionDuration(800)
         .dimension(dim)
         .group(group)
@@ -134,8 +139,8 @@ function show_spend_category_piechart(ndx) {
 
 
     chart
-        .width(500)
-        .height(350)
+        .width(600)
+        .height(400)
         .transitionDuration(800)
         .dimension(dim)
         .group(group)
@@ -205,8 +210,8 @@ function show_category_stackchart(ndx) {
     var savingsByMonth = categoryByMonth(dim, "Savings");
 
     chart
-        .width(600)
-        .height(300)
+        .width(700)
+        .height(400)
         .dimension(dim)
         .group(rentByMonth, "Rent")
         .stack(billsByMonth, "Bills")
@@ -230,9 +235,9 @@ function show_category_stackchart(ndx) {
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .yAxisLabel('Expenses per month (in %)')
-        .legend(dc.legend().x(500).y(20).itemHeight(10).gap(10))
+        .legend(dc.legend().x(600).y(20).itemHeight(10).gap(10))
         .colors(categoriesColors)
-        .margins({ left: 50, top: 20, right: 130, bottom: 50 })
+        .margins({top: 20, right: 130, bottom: 50, left: 50})
         .elasticY(true);
 }
 
@@ -248,13 +253,11 @@ function show_balance_linechart(error, budgetData, ndx) {
     var minDate = date_dim.bottom(1)[0].date;
     var maxDate = date_dim.top(1)[0].date;
 
-    var balance_per_date = date_dim.group().reduceSum(function(d) {
-        return parseFloat(d.balance);
-    });
+    var balance_per_date = date_dim.group().reduceSum(dc.pluck('balance'));
 
     chart
-        .width(650)
-        .height(300)
+        .width(700)
+        .height(400)
         .margins({ top: 10, right: 0, bottom: 50, left: 50 })
         .dimension(date_dim)
         .group(balance_per_date)
