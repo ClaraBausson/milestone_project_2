@@ -17,17 +17,17 @@
 
 <body>
     <!--JUMBOTRON-->
-    <!--<div class="jumbotron" id="landing-view">-->
-    <!--    <div class="container landing-container">-->
-    <!--        <br><br><br>-->
-    <!--        <h1 class="name">Budget</h1>-->
-    <!--        <h2 class="title">A budget visualizator</h2>-->
-    <!--        <button type="button" class="btn btn-primary btn-lg">-->
-    <!--            <a class="btn-primary" href="#top_navbar">See more</a>-->
-    <!--        </button>-->
-    <!--    </div>-->
-    <!--</div>-->
-    
+    <div class="jumbotron" id="landing-view">
+        <div class="container landing-container">
+            <br><br><br>
+            <h1 class="name">Budget</h1>
+            <h2 class="title">A budget visualizator</h2>
+            <button type="button" class="btn btn-primary btn-lg">
+                <a class="btn-primary" href="#top_navbar">See more</a>
+            </button>
+        </div>
+    </div>
+
 
     <!--NAVBAR-->
     <nav id="top_navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -53,17 +53,23 @@
             <h4>How to budget in 4 steps</h4>
         </div>
         <div class="row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsam aliquid dolorem necessitatibus fugiat aliquam qui, pariatur tenetur eligendi quis possimus nobis nesciunt reiciendis. Impedit suscipit optio ad. Ea quaerat doloribus eos blanditiis. Similique dolorem officia necessitatibus, autem possimus, sequi nisi! Architecto recusandae officiis, excepturi soluta minima quod voluptatibus ullam omnis quibusdam enim natus veniam aut voluptas expedita maiores veritatis, iste a, tempore voluptates dicta debitis. Mollitia sed, nulla quae tempora a corrupti quia, cumque vero non, atque ea, vel.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsam aliquid dolorem necessitatibus fugiat aliquam qui, pariatur tenetur eligendi quis possimus nobis nesciunt reiciendis. Impedit suscipit optio ad. Ea quaerat doloribus eos
+                blanditiis. Similique dolorem officia necessitatibus, autem possimus, sequi nisi! Architecto recusandae officiis, excepturi soluta minima quod voluptatibus ullam omnis quibusdam enim natus veniam aut voluptas expedita maiores veritatis,
+                iste a, tempore voluptates dicta debitis. Mollitia sed, nulla quae tempora a corrupti quia, cumque vero non, atque ea, vel.</p>
         </div>
     </section>
     <section class="container" id="dashboard-top">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <div><h4>Identify your transactions</h4></div>
+                <div>
+                    <h4>Identify your transactions</h4>
+                </div>
                 <div id="number_of_transactions"></div>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <div><h5>Select a specific month?</h5></div>
+                <div>
+                    <h5>Select a specific month?</h5>
+                </div>
                 <div id="month_selector"></div>
             </div>
         </div>
@@ -119,6 +125,16 @@
             <div class="col-12" id="balance_linechart"></div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="page-footer pt-2 table-primary">
+        <!-- Change to icon arrow_up -->
+        <div class="footer-back text-center py-3 btn">Click
+            <a href="#top_navbar"class="btn btn-outline-secondary">here</a>
+            to go back to the top!
+        </div>
+    </footer>
+    <!-- Footer -->
 
     <!---JS LINKS--->
     <script type="text/javascript" src="static/js/external/d3.min.js"></script>
