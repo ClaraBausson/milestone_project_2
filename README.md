@@ -11,7 +11,7 @@ This site is hosted using GitHub pages, deployed directly from the master branch
 To run locally, you can clone this repository directly into the editor of your choice by pasting git clone https://github.com/ClaraBausson/milestone_project_2.git into your terminal.
 
 ## UX
-The main goal for this project was to make it as easy as possible for users to visualize and understand the data. The color scheme is pastel with a focus on light blue and pink, to keep the website minimalistic and simple.
+The main goal for this project was to make it as easy as possible for users to visualize and understand the data. The color scheme is pastel with a focus on light blue-green and pink, to keep the website minimalistic and simple.
 
 
 ## Technologies
@@ -26,13 +26,12 @@ The main goal for this project was to make it as easy as possible for users to v
 ## Features
 
 ### Existing Features
-* Responsiveness on both mobile and desktop
 * Static navbar to allow the user a quick access to all areas
-* Collapsed navbar on smaller screen sizes
 * Connected charts - all charts are linked and interact with each others
 * Interactive charts - all charts can be manipulated by the user, and the user can obtain more info by hovering any part of the data
 
 ### Features Left to Implement
+* Responsiveness on both mobile and desktop
 * Email request feature
 
 
@@ -40,8 +39,9 @@ The main goal for this project was to make it as easy as possible for users to v
 
 ### Remaining bugs
 * Months are not in correct order
-* Income pie chart interacts in an odd way with the other charts
+* Credit transations are displayed in debit-based charts and vice versa (need to filter out data)
 * Chart size should adapt to screen size
+* Chart colors need to match the website theme
 
 ## Credits
 
