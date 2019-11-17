@@ -27,13 +27,14 @@ The main goal for this project was to make it as easy as possible for users to v
 
 
 ## Technologies
-1. HTML5
-2. CSS3
-3. Bootstrap (4.3.1)
-4. Javascript
-5. JQuery
-6. DC.js/D3/Crossfilter
-
+1. [HTML5](https://en.wikipedia.org/wiki/HTML5)
+2. [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+3. [Bootstrap (4.3.1)](https://getbootstrap.com/)
+4. [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+5. [JQuery](https://jquery.com/)
+6. [DC.js](https://dc-js.github.io/dc.js/)
+7. [D3.js](https://d3js.org/)
+8. [Crossfilter](https://square.github.io/crossfilter/)
 
 ## Features
 
