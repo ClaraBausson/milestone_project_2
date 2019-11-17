@@ -155,7 +155,7 @@ h5 {
 }
 
 #balance_linechart svg {
-    width: 90% !important;
+    width: 100vw !important;
 }
 
 .svg-container {

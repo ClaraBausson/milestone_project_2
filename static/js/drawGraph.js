@@ -220,7 +220,6 @@ function show_balance_linechart(error, budgetData, ndx) {
     var balance_per_date = date_dim.group().reduceSum(dc.pluck('balance'));
 
     chart
-        // .width(700)
         .height(400)
         .transitionDuration(500)
         .margins({ top: 10, right: 0, bottom: 50, left: 50 })
