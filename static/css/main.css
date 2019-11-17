@@ -11,20 +11,32 @@ section {
 }
 
 h1 {
-    font-size: 30px !important;
-    padding-bottom: 5px;
     color: #68A897;
+    font-size: 40px !important;
+    padding-bottom: 5px;
 }
 
 h2 {
-    font-size: 25px !important;
+    color: #68A897;
+    font-size: 30px !important;
     padding-bottom: 5px;
-    color: #78C2AE;
 }
 
 h3 {
-    font-size: 20px !important;
+    color: #78C2AE;
+    font-size: 25px !important;
+    padding-bottom: 5px;
+}
+
+h4 {
     color: #F1969B;
+    font-size: 20px !important;
+}
+
+
+h5 {
+    color: #F1969B;
+    font-size: 20px !important;
 }
 
 /*----------JUMBOTRON----------*/
@@ -45,11 +57,11 @@ h3 {
 }
 
 .landing-container h1 {
+    font-size: 40px !important;
+    font-weight: bold;
     padding-top: 5%;
     text-transform: uppercase;
-    font-weight: bold;
 }
-
 
 
 /*----------HEADER----------*/
@@ -57,8 +69,6 @@ h3 {
 .navbar {
     width: 100%;
 }
-
-
 
 /*----------FOOTER----------*/
 
@@ -70,8 +80,8 @@ h3 {
 }
 
 #footer-back {
-    padding-bottom: 15px;
     color: white;
+    padding-bottom: 15px;
 }
 
 /*-----------MEDIA QUERIES----------*/
@@ -85,10 +95,10 @@ h3 {
     }
     .svg-container {
         display: inline-block;
-        position: relative;
-        width: 75%;
-        vertical-align: top;
         overflow: hidden;
+        position: relative;
+        vertical-align: top;
+        width: 75%;
     }
 }
 
@@ -105,8 +115,8 @@ h3 {
         background-position: top;
         background-size: cover;
         height: 100vh;
-        width: inherit;
         margin-bottom: 0px;
+        width: inherit;
         z-index: 1;
     }
     .landing-container {
@@ -150,17 +160,17 @@ h3 {
 
 .svg-container {
     display: inline-block;
-    position: relative;
-    width: 90%;
-    vertical-align: top;
     overflow: hidden;
+    position: relative;
+    vertical-align: top;
+    width: 90%;
 }
 
 .dc-select-menu {
-    margin: 5%;
-    padding: 2%;
     border-color: #F1969B;
     border-radius: 5%;
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     fill: red;
+    margin: 5%;
+    padding: 2%;
 }

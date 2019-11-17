@@ -16,52 +16,6 @@ function drawGraphs(error, budgetData) {
     dc.renderAll();
 }
 
-// // DATA
-// // #,date,month,type,category,debit_amount,credit_amount,balance
-// // 1,02/01/2018,January,debit,Savings,1.16,,389.43
-// // 2,02/01/2018,January,debit,Savings,100,,289.43
-// // 3,02/01/2018,January,debit,Bills,20.52,,268.91
-// // 4,02/01/2018,January,credit,Income (passive),,1.58,270.49
-
-// function trial_filter_out_from_group(ndx) {
-//     var dim = ndx.dimension();
-//     var group = dim.group();
-    
-//     console.log('dim', typeof dim, dim);
-
-//     // var array = [
-//     //     { "id": "88", "name": "Lets go testing" },
-//     //     { "id": "99", "name": "Have fun boys and girls" },
-//     //     { "id": "108", "name": "You are awesome!" }
-//     // ];
-//     // var search_column = 'id';
-//     // var search_term = '99';
-
-//     // console.log(array);
-
-//     // function filterOut2(array, search_column, search_term) {
-//     //     console.log(array);
-//     //     // for (var i = array.length - 1; i >= 0; i--) {
-//     //     //     if (array[i].search_column === search_term) {
-//     //     //         array.splice(i, 1);
-//     //     //         console.log(array);
-//     //     //     }
-//     //     // }
-
-//     //     array.map((item) => {
-//     //         if (item.id === "99") {
-//     //             console.log('item', item);
-//     //         }
-//     //     })
-//     // }
-
-//     // console.log("array", array);
-
-//     // var newArray = filterOut2(array, search_column, search_term);
-//     // console.log(newArray);
-
-// }
-
 function show_month_selector(ndx) {
 
     var dim = ndx.dimension(dc.pluck('month'));
@@ -79,10 +33,6 @@ function show_number_transactions_barchart(ndx) {
     var dim = ndx.dimension(dc.pluck('type'));
     var group = dim.group();
 
-    var categoriesColors = d3.scale.ordinal()
-        .domain(["credit", "debit"])
-        .range(["blue", "red"]);
-
     dc.barChart("#number_of_transactions")
         .width(300)
         .height(250)
@@ -90,6 +40,7 @@ function show_number_transactions_barchart(ndx) {
         .dimension(dim)
         .group(group)
         .transitionDuration(500)
+        .colors('#DEA5A4')
         .xAxisLabel('Type of transaction')
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
