@@ -24,30 +24,41 @@ function drawGraphs(error, budgetData) {
 // // 4,02/01/2018,January,credit,Income (passive),,1.58,270.49
 
 // function trial_filter_out_from_group(ndx) {
-//     var dim = ndx.dimension(dc.pluck('category'));
+//     var dim = ndx.dimension();
 //     var group = dim.group();
+    
+//     console.log('dim', typeof dim, dim);
 
-//     var array = [
-//         { "id": "88", "name": "Lets go testing" },
-//         { "id": "99", "name": "Have fun boys and girls" },
-//         { "id": "108", "name": "You are awesome!" }
-//     ];
-//     var search_column = 'id';
-//     var search_term = '99';
+//     // var array = [
+//     //     { "id": "88", "name": "Lets go testing" },
+//     //     { "id": "99", "name": "Have fun boys and girls" },
+//     //     { "id": "108", "name": "You are awesome!" }
+//     // ];
+//     // var search_column = 'id';
+//     // var search_term = '99';
 
-//     console.log(array);
+//     // console.log(array);
 
-//     function filterOut2(array, search_column, search_term) {
-//         for (var i = array.length - 1; i >= 0; i--) {
-//             if (array[i].search_column === search_term) {
-//                 array.splice(i, 1);
-//                 console.log(array);
-//             }
-//         }
-//     }
+//     // function filterOut2(array, search_column, search_term) {
+//     //     console.log(array);
+//     //     // for (var i = array.length - 1; i >= 0; i--) {
+//     //     //     if (array[i].search_column === search_term) {
+//     //     //         array.splice(i, 1);
+//     //     //         console.log(array);
+//     //     //     }
+//     //     // }
 
-//     var newArray = filterOut2(array, search_column, search_term);
-//     console.log(newArray);
+//     //     array.map((item) => {
+//     //         if (item.id === "99") {
+//     //             console.log('item', item);
+//     //         }
+//     //     })
+//     // }
+
+//     // console.log("array", array);
+
+//     // var newArray = filterOut2(array, search_column, search_term);
+//     // console.log(newArray);
 
 // }
 
@@ -73,12 +84,11 @@ function show_number_transactions_barchart(ndx) {
         .range(["blue", "red"]);
 
     dc.barChart("#number_of_transactions")
-        .width(350)
-        .height(350)
+        .width(300)
+        .height(250)
         .margins({ top: 15, right: 50, bottom: 30, left: 50 })
         .dimension(dim)
         .group(group)
-        .colors(categoriesColors)
         .transitionDuration(500)
         .xAxisLabel('Type of transaction')
         .x(d3.scale.ordinal())
@@ -97,13 +107,13 @@ function show_income_category_piechart(ndx) {
 
     var categoriesColors = d3.scale.ordinal()
         .domain(["Income (active)", "Income (passive)"])
-        .range(["#1E90FF", "#A9A9A9"]);
+        .range(["#a9cbd7", "#d7d7d1"]);
 
 
     chart
         .width(600)
         .height(400)
-        .transitionDuration(800)
+        .transitionDuration(500)
         .dimension(dim)
         .group(group)
         .colors(categoriesColors)
@@ -113,7 +123,8 @@ function show_income_category_piechart(ndx) {
         .externalLabels(40)
         .externalRadiusPadding(50)
         .drawPaths(true)
-        .emptyTitle("No data");
+        .emptyTitle("No data")
+        .useViewBoxResizing(true);
 
     chart.on('pretransition', function(chart) {
         chart.selectAll('.dc-legend-item text')
@@ -135,13 +146,13 @@ function show_spend_category_piechart(ndx) {
 
     var categoriesColors = d3.scale.ordinal()
         .domain(["Savings", "Going Out", "Healthcare", "Rent", "Transport", "Clothing", "Groceries", "Bills", "Entertainment", "Others", "Coffee"])
-        .range(["#228B22", "#8B008B", "#00FF00", "#FF0000", "#FF4500", "#00CED1", "#FFD700", "#8B0000", "#4B0082", "#C0C0C0", "#D2691E"]);
+        .range(["#95FF91", "#B34280", "#baffc9", "#ffb3ba", "#ffdfba", "#5E98B3", "#ffffba", "#ff6961", "#bae1ff", "#cfcfc4", "#ebbf8b"]);
 
 
     chart
         .width(600)
         .height(400)
-        .transitionDuration(800)
+        .transitionDuration(500)
         .dimension(dim)
         .group(group)
         .colors(categoriesColors)
@@ -152,7 +163,7 @@ function show_spend_category_piechart(ndx) {
         .externalRadiusPadding(60)
         .radius(250)
         .drawPaths(true)
-        .emptyTitle("No data");
+        .useViewBoxResizing(true);
 
     chart.on('pretransition', function(chart) {
         chart.selectAll('.dc-legend-item text')
@@ -173,7 +184,7 @@ function show_category_stackchart(ndx) {
 
     var categoriesColors = d3.scale.ordinal()
         .domain(["Savings", "Going Out", "Healthcare", "Rent", "Transport", "Clothing", "Groceries", "Bills", "Entertainment", "Others", "Coffee"])
-        .range(["#228B22", "#8B008B", "#00FF00", "#FF0000", "#FF4500", "#00CED1", "#FFD700", "#8B0000", "#4B0082", "#C0C0C0", "#D2691E"]);
+        .range(["#95FF91", "#B34280", "#baffc9", "#ffb3ba", "#ffdfba", "#5E98B3", "#ffffba", "#ff6961", "#bae1ff", "#cfcfc4", "#ebbf8b"]);
 
     function categoryByMonth(dimension, category) {
         return dimension.group().reduce(
@@ -212,6 +223,7 @@ function show_category_stackchart(ndx) {
     chart
         .width(700)
         .height(400)
+        .transitionDuration(500)
         .dimension(dim)
         .group(rentByMonth, "Rent")
         .stack(billsByMonth, "Bills")
@@ -237,8 +249,9 @@ function show_category_stackchart(ndx) {
         .yAxisLabel('Expenses per month (in %)')
         .legend(dc.legend().x(600).y(20).itemHeight(10).gap(10))
         .colors(categoriesColors)
-        .margins({top: 20, right: 130, bottom: 50, left: 50})
-        .elasticY(true);
+        .margins({ top: 20, right: 130, bottom: 50, left: 50 })
+        .elasticY(true)
+        .useViewBoxResizing(true);
 }
 
 function show_balance_linechart(error, budgetData, ndx) {
@@ -256,16 +269,19 @@ function show_balance_linechart(error, budgetData, ndx) {
     var balance_per_date = date_dim.group().reduceSum(dc.pluck('balance'));
 
     chart
-        .width(700)
+        // .width(700)
         .height(400)
+        .transitionDuration(500)
         .margins({ top: 10, right: 0, bottom: 50, left: 50 })
+        .clipPadding(0)
         .dimension(date_dim)
         .group(balance_per_date)
-        .colors('MidnightBlue')
+        .colors('#966FB6')
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .renderArea(false)
         .brushOn(false)
         .renderDataPoints({ radius: 2.2, fillOpacity: 0.8, strokeOpacity: 0.9 })
+        .renderHorizontalGridLines(true)
         .yAxis().ticks(4);
 }

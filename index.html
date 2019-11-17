@@ -5,14 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="shortcut icon" href="images/Gold_coin_icon.png" type="image/x-icon">
+    <link rel="icon" href="images/Gold_coin_icon.png" type="image/x-icon">
 
-    <title>Budget</title>
+    <title>BUDGET | My dashboard</title>
 
     <!---CSS LINKS--->
     <link rel="stylesheet" href="static/css/external/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/external/dc.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/external/hover-min.css" type="text/css" />
 
     <link rel="stylesheet" href="static/css/main.css" type="text/css" />
+
+
 </head>
 
 <body>
@@ -20,52 +27,64 @@
     <div class="jumbotron" id="landing-view">
         <div class="container landing-container">
             <br><br><br>
-            <h1 class="name">Budget</h1>
+            <h1 class="name">My dashboard</h1>
             <h2 class="title">A budget visualizator</h2>
-            <button type="button" class="btn btn-primary btn-lg">
-                <a class="btn-primary" href="#top_navbar">See more</a>
-            </button>
+            <a class="btn btn-secondary btn-lg" href="#top_navbar">See more</a>
         </div>
     </div>
 
-
     <!--NAVBAR-->
     <nav id="top_navbar" class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand text-uppercase font-weight-bold" href="#">BUDGET</a>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#dashboard-top">My dashboard<span class="sr-only">(current)</span></a>
-                </li>
-                <!--<li class="nav-item">-->
-                <!--    <a class="nav-link" href="request.html">Send a request</a>-->
-                <!--</li>-->
-            </ul>
-        </div>
+        <a class="navbar-brand text-uppercase font-weight-bold" href="#">MY BUDGET DASHBOARD</a>
     </nav>
 
     <!--DASHBOARD-->
     <section class="container" id="page_top">
         <div class="row">
-            <h4>How to budget in 4 steps</h4>
+            <div class="col-12">
+                <h1>What is a budget?</h1>
+                <p>A budget is an itemised summary of your income and expenses for a given period. It helps you plan your spending, manage your money and set financial goals.</p>
+                <p>Whether it’s scribbled in a notepad or put into a spreadsheet, budgeting is an important life skill.</p>
+                <p>Lots of people struggle financially because they don’t plan their spending, or know what their income is. Planning how to use your money may help you:</p>
+                <ul>
+                    <li>Avoid getting into debt (or help you getting out of debt)</li>
+                    <li>Plan for big one-off expenses</li>
+                    <li>Spot potential money-saving opportunities</li>
+                </ul>
+            </div>
         </div>
         <div class="row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsam aliquid dolorem necessitatibus fugiat aliquam qui, pariatur tenetur eligendi quis possimus nobis nesciunt reiciendis. Impedit suscipit optio ad. Ea quaerat doloribus eos
-                blanditiis. Similique dolorem officia necessitatibus, autem possimus, sequi nisi! Architecto recusandae officiis, excepturi soluta minima quod voluptatibus ullam omnis quibusdam enim natus veniam aut voluptas expedita maiores veritatis,
-                iste a, tempore voluptates dicta debitis. Mollitia sed, nulla quae tempora a corrupti quia, cumque vero non, atque ea, vel.</p>
+            <div class="col-12">
+                <h1>How to budget in 4 steps</h1>
+                <p>Let’s take a look at what budgeting is and go through a step-by-step guide to making a budget.</p>
+                <ol>
+                    <li>Get your financial information together</li>
+                    <li>Identify your income</li>
+                    <li>Calculate your overall spending</li>
+                    <li>Check your expenses on a regular basis</li>
+                    <li>Review your budget yearly</li>
+                </ol>
+            </div>
         </div>
     </section>
-    <section class="container" id="dashboard-top">
+
+    <section class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Get your financial information together</h1>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div>
-                    <h4>Identify your transactions</h4>
+                    <h2>Identify your transactions</h2>
                 </div>
                 <div id="number_of_transactions"></div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div>
-                    <h5>Select a specific month?</h5>
+                    <h2>Prefer a monthly view?</h2>
+                    <h3>Select a specific month:</h3>
                 </div>
                 <div id="month_selector"></div>
             </div>
@@ -75,12 +94,17 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Types of incomes</h3>
+                <h1>Identify your income</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Types of incomes</h2>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <h4>Active Income</h4>
+                <h3>Active Income</h3>
                 <p>Income for which services have been performed. This includes wages, tips, salaries, commissions, and income from businesses in which there is material participation.</p>
-                <h4>Passive Income</h4>
+                <h3>Passive Income</h3>
                 <p>An income stream falling into this category is one where money is received usually on a regular basis, where no additional effort has taken place. Most passive income streams require great effort to start with. Passive income streams allow
                     you to make money without having to be there.</p>
                 <i>* Hovering over each data slice will show the specific value.</i>
@@ -91,9 +115,14 @@
 
     <section class="container">
         <div class="row">
+            <div class="col-12">
+                <h1>Calculate your overall spending</h1>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12 col-sm-7" id="pie_expenses_category"></div>
             <div class="col-xs-12 col-sm-5">
-                <h3>Why should you use budget categories?</h3>
+                <h2>Why should you use budget categories?</h2>
                 <p>When it comes to creating a personal budget, it can feel like there are a million financial categories to consider. In order to create a successful budget, everything should be accounted for, from large expenses like your mortgage and
                     car payment to smaller expenses like your gym membership and Netflix subscription. It allows you to clearly identify the most expensive expenses.</p>
                 <i>* Hovering over each data slice will show the specific value.</i>
@@ -104,7 +133,12 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
-                <h3>An overall view of your budget</h3>
+                <h1>Review your expenses on a regular basis</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>An overall view of your budget</h2>
                 <p>Having a clear view of your budget is critical. Whether you're planning to buy a house or a weekend escapade, it is essential to pinpoint which areas of your budget are essential and which are superfluous.</p>
                 <i>* Hovering over each data block will show the specific value.</i>
             </div>
@@ -115,23 +149,35 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
-                <h3>How much are you spending per year?</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae inventore ut laudantium alias debitis consequuntur rem ullam aperiam laboriosam officia.</p>
+                <h1>Review your budget yearly</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Can your budget be improved?</h2>
+                <p>Once you create your first budget, begin to use it and get a good feel for how it can keep your finances on track, you may want to map out your spending plan or budget for 6 months to a year down the road. You can then look for ways to
+                    even out the highs and lows in your finances.</p>
+                <p>Using a realistic budget to forecast your spending for the year can really help you with your long term financial planning. You can then make realistic assumptions about your annual income and expense and plan for long term financial goals.</p>
+
                 <i>* Hovering over each data point will show the specific value.</i>
             </div>
-            <div class="col-12" id="balance_linechart"></div>
+            <div class="col-12 svg-container" id="balance_linechart"></div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="page-footer pt-2 table-primary">
-        <!-- Change to icon arrow_up -->
-        <div class="footer-back text-center py-3 btn">Click
-            <a href="#top_navbar"class="btn btn-outline-secondary">here</a>
-            to go back to the top!
+    <!--FOOTER-->
+    <footer class="container-fluid bg-primary">
+
+        <div id="footer" class="row">
+            <div id="footer-back" class="col-12 text-center mx-auto pt-3">
+                Back to the 
+                <a href="#top_navbar" class="hvr-icon-up">
+					<i class="footer-icon fa fa-arrow-circle-o-up hvr-icon"></i>
+                            <span class="sr-only">Page Top</span>
+				</a>
+            </div>
         </div>
     </footer>
-    <!-- Footer -->
 
     <!---JS LINKS--->
     <script type="text/javascript" src="static/js/external/d3.min.js"></script>
